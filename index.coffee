@@ -14,6 +14,7 @@ class PayPal
     @username = options.username
     @password = options.password
     @signature = options.signature
+    @subject = options.subject
 
   call: (method, parameters, callback) =>
 
@@ -64,6 +65,9 @@ class PayPal
       METHOD: method,
       VERSION: API_VERSION,
     }
+    
+    if @subject
+        args.SUBJECT = @subject
 
     for k, v of parameters
       args[k] = v

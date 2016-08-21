@@ -67,7 +67,7 @@ class PayPal
     }
     
     if @subject
-        args.SUBJECT = @subject
+      args.SUBJECT = @subject
 
     for k, v of parameters
       args[k] = v

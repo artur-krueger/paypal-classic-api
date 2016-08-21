@@ -24,6 +24,7 @@
       this.username = options.username;
       this.password = options.password;
       this.signature = options.signature;
+      this.subject = options.subject;
     }
 
     PayPal.prototype.call = function(method, parameters, callback) {
@@ -114,6 +115,7 @@
         METHOD: method,
         VERSION: API_VERSION
       };
+      if (this.subject) args.SUBJECT=this.subject;
       for (k in parameters) {
         v = parameters[k];
         args[k] = v;

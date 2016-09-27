@@ -37,6 +37,7 @@
         }
         response = {};
         extractValue = function(key, value) {
+          if (key=="TRANSACTIONID") return value;
           var date;
           if (!isNaN(value)) {
             value = parseFloat(value);
@@ -112,14 +113,15 @@
         USER: this.username,
         PWD: this.password,
         SIGNATURE: this.signature,
+        SUBJECT: this.subject,
         METHOD: method,
         VERSION: API_VERSION
       };
-      if (this.subject) args.SUBJECT=this.subject;
       for (k in parameters) {
         v = parameters[k];
         args[k] = v;
       }
+
       return request.post({
         url: this.apiUrl,
         body: querystring.encode(args)
